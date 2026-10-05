@@ -1,0 +1,396 @@
+:root {
+    --background: linear-gradient(97.26deg, #ed3cca .49%, #df34d2 14.88%, #d02bd9 29.27%, #bf22e1 43.14%, #ae1ae8 57.02%, #9a10f0 70.89%, #8306f7 84.76%, #7c1af8 99.15%), linear-gradient(rgba(0, 0, 0, .05), rgba(0, 0, 0, .05));
+    --color-title: #3a0a63;
+}
+
+body{
+    width: 1280px;
+    margin: auto;
+    position: relative;
+
+    background: var(--background);
+}
+
+.main{
+    width: 1280px;
+    position: relative;
+}
+
+.secForDelivery{
+    height: 500px;
+    width: 1150px;
+    margin: 0 0 0 64px;
+
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column-reverse;
+    align-items: center;
+    border: solid 2px black
+}
+
+.form-action{
+    width: 1000px;
+    height: 500px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.secPersonalData{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.adress{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    margin: 0 0 25px 0;
+}
+
+.all-choosen{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.pay{
+    display: flex;
+}
+
+.button-submit{
+    width: 69px;
+    height: 35px;
+    margin: 0 0 -39px 222px;
+    background-color: rgba(227, 163, 117, 0.874);
+    border: 2px solid rgba(220, 145, 91, 0.874);
+    font-size: 16px;
+    display: inline-block;
+    box-sizing: border-box;
+    border-radius: 60px;
+    font-weight: 100;
+    letter-spacing: 0.01em;
+    position: relative;
+    z-index: 1;
+}
+
+.invalid{
+    border: 2px rgb(226, 92, 92) solid;
+}
+
+input[type='radio'].invalid{
+    outline: 1px solid rgb(226, 92, 92);
+}
+
+table {
+    font-family: "WB Sans", "Segoe UI", Arial, sans-serif;
+    font-size: 14px;
+    border-radius: 10px;
+    border-spacing: 0;
+    text-align: center;
+}
+
+.section-for-book{
+    min-width: 200px;
+    min-height: 500px;
+    background: #FAFAFA;
+    border-radius: 9px;
+    margin-bottom: 90px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.imgCard{
+    width: 150px;
+    height: 200px;
+
+    object-fit: contain;
+}
+
+.text-wraprt{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    font-family: "WB Sans", "Segoe UI", Arial, sans-serif;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 25px;
+
+    color: rgba(79, 67, 67, 90%);
+}
+
+.button-delete{
+    width: 30px ;
+    height: 30px;
+
+    background: #FAFAFA;
+    border-radius: 100px;
+    border: solid 2px rgba(227, 163, 117, 0.874);
+
+    font-family: Arial, serif;
+    font-style: normal;
+    font-size: 13px;
+    line-height: 25px;
+    color: rgba(27, 27, 27, 0.903);
+}
+
+.button-delete:hover{
+    cursor: pointer;
+    background: rgba(220, 145, 91, 0.874)
+}
+
+.author-book{
+    width: 200px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.window-order{
+    display: none;
+}
+
+.show-window{
+    width: 380px;
+    height: 250px;
+    z-index: 2;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(227, 163, 117, 0.874);
+    border-radius: 9px;
+    position: fixed;
+    top: 20%;
+    left: 37%;
+
+    font-family: "WB Sans", "Segoe UI", Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+
+    color: #000000;
+
+}
+
+.button-delete-window{
+    width: 69px;
+    height: 35px;
+    margin: 15px 0 0 7px;
+    background-color: #FAFAFA;
+    border: 2px solid rgba(220, 145, 91, 0.874);
+    font-size: 16px;
+    display: inline-block;
+    box-sizing: border-box;
+    border-radius: 60px;
+    font-weight: 100;
+    letter-spacing: 0.01em;
+    position: relative;
+}
+
+.button-delete-window:hover{
+    cursor: pointer;
+    background-color: rgb(169 86 26 / 87%);
+}
+
+.show-error{
+    display: block;
+}
+
+.info-books-order{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    height: 140px;
+    width: 385px;
+    margin: 0 0 0 25px;
+}
+
+.total-price{
+    font-family: "WB Sans", "Segoe UI", Arial, sans-serif;
+    font-style: normal;
+    font-size: 17px;
+    line-height: 25px;
+    color: rgba(27, 27, 27, 0.903);
+}
+
+.section-input{
+    position: relative;
+    padding: 10px 0
+}
+
+#allchoos{
+    width: 250px;
+    height: 79px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    text-align: center;
+}
+
+.pay-title{
+    margin: -4px 0 -30px -26px;
+    font-family: "WB Sans", "Segoe UI", Arial, sans-serif;
+    font-style: normal;
+    font-size: 17px;
+    line-height: 25px;
+    color: rgba(27, 27, 27, 0.903);
+}
+
+.two-radio-button{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-evenly;
+    margin: 10px 0 0 25px;
+
+}
+
+label {
+    transform-origin: left center;
+    font-weight: 100;
+    letter-spacing: 0.01em;
+    font-size: 17px;
+    box-sizing: border-box;
+    display: inline-block;
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
+    margin: 0 0 0 -45px;
+
+}
+
+*{
+    font-family: "WB Sans", "Segoe UI", Arial, sans-serif;
+}
+
+form{
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 30px 25px;
+    background-color: white;
+    border-radius: 40px;
+    margin: 40px 0;
+
+}
+
+input[type="text"]{
+    appearance: none;
+    background-color: none;
+
+    line-height: 0;
+    font-size: 17px;
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    padding: 10px 15px;
+    border-radius: 60px;
+    color: var(--color-title);;
+    font-weight: 100;
+    letter-spacing: 0.01em;
+    position: relative;
+    z-index: 1;
+}
+
+input[type="date"]{
+    appearance: none;
+    background-color: none;
+    font-size: 16px;
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    padding: 10px 15px;
+    border-radius: 60px;
+    font-weight: 100;
+    letter-spacing: 0.01em;
+    position: relative;
+    z-index: 1;
+    transition: 0.3s ease;
+}
+
+input:focus{
+    outline: none;
+    background: rgba(227, 163, 117, 0.874);
+    border: 2px solid rgba(227, 163, 117, 0.874);
+    color: white;
+    margin-top: 30px;
+}
+
+label:valid{
+    margin-bottom: 30px;
+}
+
+.pay-radio{
+    width: 17px;
+    height: 17px;
+    border-radius: 100px;
+    position: relative;
+    content: '';
+
+    display: inline-block;
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+    transition: .3s;
+
+    margin-left: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 900;
+}
+
+input[type='radio']::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 2px solid rgba(169, 109, 66, 0.874);
+}
+
+input[type="radio"]:checked::after{
+    border: 2px solid rgba(169, 109, 66, 0.874);
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: rgba(227, 163, 117, 0.874);
+    transform: translate(-50%, -50%);
+    visibility: visible;
+}
+
+#multiple{
+    border-radius: 5px;
+    font-family: "WB Sans", "Segoe UI", Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    background-color: rgba(227, 163, 117, 0.874);
+}
+
+.title-present{
+    margin: 10px 0 10px 59px;
+}
+

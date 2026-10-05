@@ -1,0 +1,304 @@
+:root {
+    --background: linear-gradient(97.26deg, #ed3cca .49%, #df34d2 14.88%, #d02bd9 29.27%, #bf22e1 43.14%, #ae1ae8 57.02%, #9a10f0 70.89%, #8306f7 84.76%, #7c1af8 99.15%), linear-gradient(rgba(0, 0, 0, .05), rgba(0, 0, 0, .05));
+    --color-title: #3a0a63;
+    --border-accent: #3a0a63;
+}
+
+body {
+    width: 1280px;
+    margin: auto;
+    position: relative;
+
+    background: var(--background);
+}
+
+.main {
+    width: 1280px;
+    position: relative;
+}
+
+.header {
+    width: 1240px;
+    height: 120px;
+    margin: 20px;
+    padding: 0 20px;
+    box-sizing: border-box;
+
+    background-color: #FFFFFF;
+    border-radius: 9px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.header-content {
+    width: 1200px;
+    height: 60px;
+    position: relative;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.section-bag {
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    width: 80px;
+    height: 60px;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.bag-book {
+    width: 55px;
+    height: 55px;
+}
+
+.bag-book.over {
+    outline: solid 2px #FFFFFF;
+    border-radius: 9px;
+}
+
+.logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.logo-img {
+    width: 55px;
+    height: 55px;
+    margin: 0 15px 0 0;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.title-shop {
+    font-family: "WB Sans", "Segoe UI", Arial, sans-serif;
+    font-style: normal;
+    font-size: 32px;
+    line-height: 35px;
+    text-align: left;
+    margin: 0;
+
+    color: var(--color-title);
+}
+
+.subtitle-logo {
+    font-family: Arial, serif;
+    font-style: normal;
+    font-size: 15px;
+    line-height: 20px;
+    color: rgba(27, 27, 27, 0.903);
+    margin: 0;
+
+}
+
+.book-page {
+    width: 1280px;
+    height: 1627px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.main-content {
+    width: 1240px;
+    height: 1462px;
+
+
+    display: grid;
+    grid-template-columns: repeat(4, 295px);
+    grid-template-rows: repeat(3, 485px);
+    justify-items: center;
+    column-gap: 20px;
+    row-gap: 16px;
+}
+
+.book-card {
+    width: 295px;
+    height: 460px;
+    margin: 0;
+    position: relative;
+
+    background: #FFFFFF;
+    border-radius: 9px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.imgCard {
+    width: 200px;
+    height: 265px;
+    margin: 0 0 5px 0;
+
+    object-fit: contain;
+}
+
+.name-book {
+    width: 247px;
+    height: 72px;
+    margin: 0;
+
+    font-family: "WB Sans", "Segoe UI", Arial, sans-serif;
+    font-style: normal;
+    font-size: 15px;
+    line-height: 25px;
+    text-align: center;
+    color: var(--color-title);
+}
+
+.price-book {
+    width: 160px;
+    height: 22px;
+    margin: 0;
+
+    font-family: "WB Sans", "Segoe UI", Arial, sans-serif;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 25px;
+    text-align: center;
+    color: rgba(27, 27, 27, 0.903);
+}
+
+.currency {
+    font-weight: 700;
+}
+
+.section-for-button {
+    width: 240px;
+    height: 34px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.show-more {
+    width: 83px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #FAFAFA;
+    border-radius: 100px;
+    border: solid 2px var(--border-accent);
+
+    font-family: "WB Sans", "Segoe UI", Arial, sans-serif;
+    font-style: normal;
+    font-size: 13px;
+    line-height: 25px;
+    color: var(--color-title);
+
+}
+
+.show-more:hover {
+    cursor: pointer;
+    background: rgba(58, 10, 99, 0.1);
+}
+
+.add-bag {
+    width: 100px;
+    height: 30px;
+
+    background: #FAFAFA;
+    border-radius: 100px;
+    border: solid 2px var(--border-accent);
+
+    font-family: Arial, serif;
+    font-style: normal;
+    font-size: 13px;
+    line-height: 25px;
+    color: rgba(27, 27, 27, 0.903);
+
+}
+
+.add-bag:hover {
+    cursor: pointer;
+    background: rgba(58, 10, 99, 0.1);
+}
+
+.modal-win {
+    display: none;
+}
+
+.show-win {
+    width: 285px;
+    max-height: 350px;
+    padding: 15px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    background: #FFFFFF;
+    border-radius: 9px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+
+    font-family: 'Georgia', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+
+    position: absolute;
+    bottom: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 50;
+
+    color: #000000;
+
+}
+
+.name-book-mod {
+    margin: 0 0 10px 0;
+    flex: 0 0 auto;
+    max-height: 90px;
+    overflow-y: auto;
+
+    font-family: "WB Sans", "Segoe UI", Arial, sans-serif;
+    font-style: normal;
+    font-size: 15px;
+    line-height: 22px;
+    color: var(--color-title);
+}
+
+.describe-book {
+    margin: 0;
+    padding-right: 5px;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+
+    font-family: "WB Sans", "Segoe UI", Arial, sans-serif;
+    font-style: normal;
+    font-size: 15px;
+    line-height: 25px;
+    color: rgba(27, 27, 27, 0.903);
+}
