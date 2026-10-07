@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yarn shop - Delivery</title>
+    <link href="main.css" rel="stylesheet">
+    <script src="books.js"></script>
+    <script src="main.js"></script>
+</head>
+<body>
+<div class="main">
+    <div class="header">
+        <div class="header-content">
+            <a class="logo" href="../index.html">
+                <img class="logo-img" src="../../images/icon.svg" alt="Yarn shop" draggable="false">
+                <div class="logo-text">
+                    <h2 class="title-shop">Yarn shop</h2>
+                </div>
+            </a>
+            <section class="section-bag">
+                <a href="../cart/cart.html">
+                    <img class="bag-book" src="../../images/cart.png" alt="Cart" draggable="false">
+                </a>
+            </section>
+        </div>
+    </div>
+
+    <section class="section-for-book"></section>
+
+    <section class="secForDelivery" id="mainDelivery">
+        <p class="show-error"></p>
+
+        <form class="form-action" action="" method="get">
+            <section class="secPersonalData">
+                <section class="section-input" id="sec-name">
+                    <label class="name-class" for="name"></label>
+                    <input type="text" id="name" placeholder="Name">
+                </section>
+
+                <section class="section-input">
+                    <label class="surname" for="surname"></label>
+                    <input type="text" id="surname" placeholder="Surname">
+                </section>
+
+                <section id="allchoos">
+                    <p class="pay-title">Payment type</p>
+                    <section class="two-radio-button">
+                        <section>
+                            <label class="rad-label">Card</label>
+                            <input class="pay-radio" type="radio" id="pay-card" name="pay" value="card">
+                        </section>
+                        <section>
+                            <label class="rad-label">Cash</label>
+                            <input class="pay-radio" type="radio" id="pay-cash" name="pay" value="cash">
+                        </section>
+                    </section>
+                </section>
+
+                <section class="section-gifts">
+                    <p class="title-present">Choose two gifts</p>
+                    <select id="multiple" multiple>
+                        <option value="pack">pack as a gift</option>
+                        <option value="postcard">add postcard</option>
+                        <option value="sale">provide 2% discount to the next time</option>
+                        <option value="pen">branded pen or pencil</option>
+                    </select>
+                </section>
+            </section>
+
+            <section class="adress">
+                <section class="delivery">
+                    <label class="delivery-data" for="date"></label>
+                    <input type="date" id="date">
+                </section>
+
+                <section>
+                    <label class="street" for="street"></label>
+                    <input type="text" id="street" placeholder="Street">
+                </section>
+
+                <section>
+                    <label class="house-num" for="house"></label>
+                    <input type="text" id="house" placeholder="House`s number">
+                </section>
+
+                <section>
+                    <label class="flat-number" for="flat"></label>
+                    <input type="text" id="flat" placeholder="Flat`s number">
+                </section>
+
+                <button type="button" class="button-submit" disabled>Submit</button>
+            </section>
+        </form>
+    </section>
+
+    <section class="window-order">
+        <p class="order-title"></p>
+        <section class="order-delivery"></section>
+        <section class="order-house"></section>
+        <section class="order-flat"></section>
+        <section class="order-customer"></section>
+        <button type="button" class="button-delete-window">Close</button>
+    </section>
+</div>
+</body>
+</html>

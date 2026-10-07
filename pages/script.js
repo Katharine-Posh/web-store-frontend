@@ -3,6 +3,8 @@ let cart = [],
     bagBook
 
 function init() {
+    cart = (JSON.parse(localStorage.getItem("cart")) || {list: []}).list
+
     bookList = document.querySelector(".main-content")
     bagBook = document.querySelector(".bag-book")
 
@@ -117,6 +119,7 @@ function makeEventDragOnBag() {
     });
 
     bagBook.addEventListener("drop", drop)
+    bagBook.addEventListener("click", openCart)
 }
 
 function drag(e) {
@@ -132,11 +135,21 @@ function drop(e) {
 
 function addToCart(bookId) {
     cart.push(bookId)
+    saveCart()
+}
+
+function saveCart() {
+    localStorage.setItem("cart", JSON.stringify({list: cart}))
+}
+
+function openCart() {
+    saveCart()
+    window.location.href = "cart/cart.html"
 }
 
 function createOrder() {
-    localStorage.setItem("cart", JSON.stringify({list: cart}));
-    window.location.href = "../delivery/delivery.html"
+    saveCart()
+    window.location.href = "cart/cart.html"
 }
 
 window.onload = init;
