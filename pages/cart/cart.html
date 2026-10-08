@@ -1,29 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yarn shop - Cart</title>
+    <title>Yarn shop - Корзина</title>
     <link href="cart.css" rel="stylesheet">
-    <script src="../main/books.js"></script>
+    <script src="../main/yarns.js"></script>
     <script src="cart.js"></script>
 </head>
 <body>
-<div class="main">
-    <div class="header">
+<main class="main">
+    <header class="header">
         <div class="header-content">
             <a class="logo" href="../index.html">
-                <img class="logo-img" src="../../images/icon.svg" alt="Yarn shop" draggable="false">
+                <img class="logo-img" src="../../images/icon.svg" alt="Логотип Yarn shop" draggable="false">
                 <div class="logo-text">
-                    <h2 class="title-shop">Yarn shop</h2>
+                    <h1 class="title-shop">Yarn shop</h1>
                 </div>
             </a>
-            <section class="section-bag">
-                <img class="bag-book" src="../../images/cart.png" alt="Cart" draggable="false">
-            </section>
+            <div class="section-bag">
+                <img class="bag-book" src="../../images/cart.png" alt="Корзина" draggable="false">
+            </div>
         </div>
-    </div>
+    </header>
 
     <section class="cart-container">
         <h2 class="cart-title">Детали заказа</h2>
@@ -35,14 +35,32 @@
                 </td>
 
                 <td class="cart-cell cart-form">
-                    <form class="order-form" action="" method="get">
-                        <section class="section-input">
-                            <input type="text" id="name" placeholder="ФИО">
-                        </section>
+                    <button type="button" class="button-order">Оформить заказ</button>
 
-                        <section class="pay-block">
+                    <form class="order-form" action="" method="get" hidden>
+                        <div class="section-input">
+                            <label class="visually-hidden" for="name">Имя</label>
+                            <input type="text" id="name" placeholder="Имя" autocomplete="given-name">
+                        </div>
+
+                        <div class="section-input">
+                            <label class="visually-hidden" for="surname">Фамилия</label>
+                            <input type="text" id="surname" placeholder="Фамилия" autocomplete="family-name">
+                        </div>
+
+                        <div class="section-input">
+                            <label class="visually-hidden" for="phone">Контактный телефон</label>
+                            <input type="tel" id="phone" placeholder="Контактный телефон" autocomplete="tel">
+                        </div>
+
+                        <div class="section-input">
+                            <label class="visually-hidden" for="address">Адрес доставки</label>
+                            <input type="text" id="address" placeholder="Адрес доставки" autocomplete="street-address">
+                        </div>
+
+                        <div class="pay-block">
                             <p class="pay-title">Тип оплаты</p>
-                            <section class="two-radio-button">
+                            <div class="two-radio-button">
                                 <label class="rad-label">
                                     Карта
                                     <input class="pay-radio" type="radio" id="pay-card" name="pay" value="card">
@@ -51,39 +69,36 @@
                                     Наличные
                                     <input class="pay-radio" type="radio" id="pay-cash" name="pay" value="cash">
                                 </label>
-                            </section>
-                        </section>
+                            </div>
+                        </div>
 
-                        <section class="section-input">
-                            <input type="date" id="date">
-                        </section>
-
-                        <section class="section-input">
-                            <select id="pickup-point" required>
+                        <div class="section-input">
+                            <select id="pickup-point">
                                 <option value="" selected>Пункт выдачи</option>
                                 <option value="1">Пункт выдачи 1</option>
                                 <option value="2">Пункт выдачи 2</option>
                                 <option value="3">Пункт выдачи 3</option>
                             </select>
-                        </section>
+                        </div>
 
                         <p class="show-error"></p>
 
-                        <button type="button" class="button-submit" disabled>Submit</button>
+                        <button type="button" class="button-submit" disabled>Создать заказ</button>
                     </form>
                 </td>
             </tr>
             </tbody>
         </table>
     </section>
-</div>
+</main>
 
 <section class="window-order">
     <p class="order-title"></p>
-    <section class="order-date"></section>
-    <section class="order-pickup"></section>
-    <section class="order-customer"></section>
-    <button type="button" class="button-delete-window">Close</button>
+    <div class="order-customer"></div>
+    <div class="order-phone"></div>
+    <div class="order-address"></div>
+    <div class="order-pickup"></div>
+    <button type="button" class="button-delete-window">Закрыть</button>
 </section>
 </body>
 </html>
