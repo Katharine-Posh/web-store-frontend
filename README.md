@@ -51,3 +51,22 @@ python -m http.server 8000
 ```
 
 и перейти на `http://localhost:8000/`.
+
+## Деплой на GitHub Pages
+
+Проект — статический сайт, деплой настроен через GitHub Actions
+(`.github/workflows/deploy.yml`).
+
+1. Запушьте проект в ветку `main`:
+   ```bash
+   git add .
+   git commit -m "Add deploy"
+   git push origin main
+   ```
+2. В репозитории откройте **Settings → Pages** и в поле **Source**
+   выберите **GitHub Actions**.
+3. После выполнения workflow сайт будет доступен по адресу
+   `https://<ваш-логин>.github.io/web-store-frontend/`.
+
+Корневой `index.html` перенаправляет на страницу каталога `pages/index.html`,
+поэтому деплоить нужно весь проект целиком (как настроено в workflow).
