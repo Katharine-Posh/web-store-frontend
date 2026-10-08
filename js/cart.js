@@ -97,7 +97,7 @@ function renderCart() {
 
         let imgItem = document.createElement("img")
         imgItem.classList.add("cart-item-img")
-        imgItem.setAttribute("src", book.imageLink)
+        imgItem.setAttribute("src", new URL(book.imageLink, DATA_ROOT).href)
         imgItem.setAttribute("alt", book.title)
 
         let infoBooks = document.createElement("div")

@@ -195,7 +195,7 @@ function renderCart() {
 
         let imgSec = document.createElement("img")
         imgSec.classList.add("imgCard")
-        imgSec.setAttribute('src', yarns[book].imageLink)
+        imgSec.setAttribute('src', new URL(yarns[book].imageLink, DATA_ROOT).href)
 
         let buttonDelete = document.createElement("button")
         buttonDelete.type = "button"

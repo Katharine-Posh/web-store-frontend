@@ -35,7 +35,7 @@ function addBook(book, bookId) {
 
     let imgBook = document.createElement("img")
     imgBook.classList.add("imgCard")
-    imgBook.setAttribute('src', book.imageLink)
+    imgBook.setAttribute('src', new URL(book.imageLink, DATA_ROOT).href)
     imgBook.draggable = false
     bookElem.append(imgBook);
 
