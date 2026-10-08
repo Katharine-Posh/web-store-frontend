@@ -91,15 +91,6 @@ body{
     color: var(--color-title);
 }
 
-.subtitle-logo{
-    font-family: "WB Sans", "Segoe UI", Arial, sans-serif;
-    font-style: normal;
-    font-size: 15px;
-    line-height: 20px;
-    color: rgba(27, 27, 27, 0.903);
-    margin: 0;
-}
-
 .secForDelivery{
     height: 500px;
     width: 1150px;
@@ -133,15 +124,6 @@ body{
     margin: 0 0 25px 0;
 }
 
-.all-choosen{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-.pay{
-    display: flex;
-}
-
 .button-submit{
     width: 69px;
     height: 35px;
@@ -164,14 +146,6 @@ body{
 
 input[type='radio'].invalid{
     outline: 1px solid rgb(226, 92, 92);
-}
-
-table {
-    font-family: "WB Sans", "Segoe UI", Arial, sans-serif;
-    font-size: 14px;
-    border-radius: 10px;
-    border-spacing: 0;
-    text-align: center;
 }
 
 .section-for-book{
@@ -228,14 +202,6 @@ table {
     background: rgba(220, 145, 91, 0.874)
 }
 
-.author-book{
-    width: 200px;
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
 .window-order{
     display: none;
 }
@@ -290,7 +256,7 @@ table {
     display: block;
 }
 
-.info-books-order{
+.info-yarns-order{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -410,10 +376,6 @@ input:focus{
     border: 2px solid rgba(227, 163, 117, 0.874);
     color: white;
     margin-top: 30px;
-}
-
-label:valid{
-    margin-bottom: 30px;
 }
 
 .pay-radio{

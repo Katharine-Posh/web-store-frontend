@@ -1,4 +1,4 @@
-:root {
+﻿:root {
     --background: linear-gradient(97.26deg, #ed3cca .49%, #df34d2 14.88%, #d02bd9 29.27%, #bf22e1 43.14%, #ae1ae8 57.02%, #9a10f0 70.89%, #8306f7 84.76%, #7c1af8 99.15%), linear-gradient(rgba(0, 0, 0, .05), rgba(0, 0, 0, .05));
     --color-title: #3a0a63;
     --border-accent: #3a0a63;
@@ -100,13 +100,6 @@ body {
     margin: 0;
 
     color: var(--color-title);
-}
-
-.subtitle-logo {
-    font-size: 15px;
-    line-height: 20px;
-    color: rgba(27, 27, 27, 0.903);
-    margin: 0;
 }
 
 /* ---------- white container ---------- */
@@ -347,10 +340,6 @@ body {
     background-position: right 18px center;
 }
 
-.section-input select:required:invalid {
-    color: rgba(58, 10, 99, 0.5);
-}
-
 .pay-title {
     margin: 0 0 10px 0;
     font-size: 15px;
@@ -380,24 +369,6 @@ body {
     height: 17px;
     accent-color: var(--color-title);
     cursor: pointer;
-}
-
-select {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 10px 15px;
-
-    font-size: 14px;
-    color: var(--color-title);
-
-    background: #FFFFFF;
-    border: solid 2px rgba(58, 10, 99, 0.25);
-    border-radius: 9px;
-}
-
-select:focus {
-    outline: none;
-    border-color: var(--border-accent);
 }
 
 .show-error {

@@ -17,8 +17,7 @@ let cart = [],
     orderFlat,
     orderCustomer,
     buttonDeleteWindow,
-    formAction,
-    buttonDelete
+    formAction
 
 function init() {
     inputForName = document.querySelector("#name")
@@ -43,6 +42,7 @@ function init() {
     cart = JSON.parse(localStorage.getItem("cart")) || {list: []}
 
     formAction.addEventListener("blur", validBlur, true)
+    formAction.addEventListener("submit", (e) => e.preventDefault())
 
     secForPresent.addEventListener("change", checkSelect)
     buttonDeleteWindow.addEventListener("click", removeModal)
@@ -57,13 +57,12 @@ function validationName(e) {
         messages.push("Error 1")
         if (!inputForName.classList.contains("invalid") && (inputForName == e.target)) {
             inputForName.classList.add("invalid")
-            secError.innerHTML = 'Please enter a valid name'
+            secError.textContent = 'Please enter a valid name'
         }
     } else {
         if (inputForName.classList.contains("invalid")) {
             inputForName.classList.remove("invalid")
-            inputForName.classList.add("label:valid")
-            secError.innerHTML = ''
+            secError.textContent = ''
         }
     }
 }
@@ -74,12 +73,12 @@ function validationSurname(e) {
         messages.push("Error 2")
         if (!inputForSurname.classList.contains("invalid") && (inputForSurname == e.target)) {
             inputForSurname.classList.add("invalid")
-            secError.innerHTML = 'Please enter a valid surname'
+            secError.textContent = 'Please enter a valid surname'
         }
     } else {
         if (inputForSurname.classList.contains("invalid")) {
             inputForSurname.classList.remove("invalid")
-            secError.innerHTML = ''
+            secError.textContent = ''
         }
     }
 }
@@ -90,13 +89,13 @@ function validationStreet(e) {
         messages.push("Error 3")
         if (!inputStreet.classList.contains("invalid") && (inputStreet == e.target)) {
             inputStreet.classList.add("invalid")
-            secError.innerHTML = 'Please enter a valid street'
+            secError.textContent = 'Please enter a valid street'
         }
 
     } else {
         if (inputStreet.classList.contains("invalid")) {
             inputStreet.classList.remove("invalid")
-            secError.innerHTML = ''
+            secError.textContent = ''
         }
     }
 }
@@ -108,12 +107,12 @@ function validationHouse(e) {
         messages.push("Error 4")
         if (!inputHouseNum.classList.contains("invalid") && (inputHouseNum == e.target)) {
             inputHouseNum.classList.add("invalid")
-            secError.innerHTML = 'Please enter a valid house'
+            secError.textContent = 'Please enter a valid house'
         }
     } else {
         if (inputHouseNum.classList.contains("invalid")) {
             inputHouseNum.classList.remove("invalid")
-            secError.innerHTML = ''
+            secError.textContent = ''
         }
     }
 }
@@ -125,12 +124,12 @@ function validationFlat(e) {
         messages.push("Error 5")
         if (!inputFlat.classList.contains("invalid") && (inputFlat == e.target)) {
             inputFlat.classList.add("invalid")
-            secError.innerHTML = 'Please enter a valid flat'
+            secError.textContent = 'Please enter a valid flat'
         }
     } else {
         if (inputFlat.classList.contains("invalid")) {
             inputFlat.classList.remove("invalid")
-            secError.innerHTML = ''
+            secError.textContent = ''
         }
     }
 }
@@ -144,12 +143,12 @@ function validationDate(e) {
         messages.push("Error 6")
         if (!inputForDataDeliv.classList.contains("invalid") && (inputForDataDeliv == e.target)) {
             inputForDataDeliv.classList.add("invalid")
-            secError.innerHTML = 'Please enter a valid data'
+            secError.textContent = 'Please enter a valid data'
         }
     } else {
         if (inputForDataDeliv.classList.contains("invalid")) {
             inputForDataDeliv.classList.remove("invalid")
-            secError.innerHTML = ''
+            secError.textContent = ''
         }
     }
 }
@@ -188,7 +187,7 @@ function checkSelect(e) {
 function renderCart() {
     let Allprice = 0
 
-    secForBook.innerHTML = ""
+    secForBook.replaceChildren()
 
     cart.list.forEach((book, index) => {
         let itemWraper = document.createElement("section")
@@ -196,25 +195,28 @@ function renderCart() {
 
         let imgSec = document.createElement("img")
         imgSec.classList.add("imgCard")
-        imgSec.setAttribute('src', books[book].imageLink)
+        imgSec.setAttribute('src', yarns[book].imageLink)
 
-        buttonDelete = document.createElement("button")
+        let buttonDelete = document.createElement("button")
+        buttonDelete.type = "button"
         buttonDelete.classList.add("button-delete")
         buttonDelete.innerText = "X"
 
         let infoBooks = document.createElement("section")
-        infoBooks.classList.add("info-books-order")
-
-        let authorBook = document.createElement("section")
-        authorBook.classList.add("author-book")
-        authorBook.innerHTML = "<b>" + "Author:" + "</b>" + " " + books[book].author
+        infoBooks.classList.add("info-yarns-order")
 
         let titleBook = document.createElement("section")
         titleBook.classList.add("title-author")
-        titleBook.innerHTML = "<b>" + "Title:" + "</b>" + " " + books[book].title
+
+        let titleLabel = document.createElement("b")
+        titleLabel.textContent = "Title:"
+        titleBook.append(titleLabel, " " + yarns[book].title)
 
         let priceBook = document.createElement("section")
-        priceBook.innerHTML += "<b>" + "Цена:" + "</b>" + " " + books[book].price + " ₽"
+
+        let priceLabel = document.createElement("b")
+        priceLabel.textContent = "Цена:"
+        priceBook.append(priceLabel, " " + yarns[book].price + " ₽")
 
         buttonDelete.onclick = () => {
             cart.list.splice(index, 1)
@@ -222,9 +224,8 @@ function renderCart() {
             renderCart()
         }
 
-        Allprice += books[book].price
+        Allprice += yarns[book].price
 
-        infoBooks.append(authorBook)
         infoBooks.append(titleBook)
         infoBooks.append(priceBook)
         infoBooks.append(buttonDelete)
@@ -237,16 +238,25 @@ function renderCart() {
 
     let totalPrice = document.createElement('span')
     totalPrice.classList.add("total-price")
-    totalPrice.innerHTML = "<b>" + "Total price:" + "</b>" + " " + Allprice + " ₽"
+
+    let totalLabel = document.createElement("b")
+    totalLabel.textContent = "Total price:"
+    totalPrice.append(totalLabel, " " + Allprice + " ₽")
     secForBook.append(totalPrice)
 }
 
+function appendOrderLine(parent, label, value) {
+    let lineLabel = document.createElement("b")
+    lineLabel.textContent = label
+    parent.replaceChildren(lineLabel, " " + value)
+}
+
 function popupOrder() {
-    orderTitle.innerHTML = "<b>" + "Create order" + "</b>"
-    orderDelivery.innerHTML = "<b>" + "Delivery address:" + "</b>" + " " + inputStreet.value
-    orderHouse.innerHTML = "<b>" + "House:" + "</b>" + " " + inputHouseNum.value
-    orderFlat.innerHTML = "<b>" + "Flat" + "</b>" + " " + inputFlat.value
-    orderCustomer.innerHTML = "<b>" + "Customer:" + "</b>" + " " + inputForName.value + " " + inputForSurname.value
+    appendOrderLine(orderTitle, "Create order", "")
+    appendOrderLine(orderDelivery, "Delivery address:", inputStreet.value)
+    appendOrderLine(orderHouse, "House:", inputHouseNum.value)
+    appendOrderLine(orderFlat, "Flat:", inputFlat.value)
+    appendOrderLine(orderCustomer, "Customer:", inputForName.value + " " + inputForSurname.value)
 
     showWin()
 }

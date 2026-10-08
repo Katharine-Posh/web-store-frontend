@@ -1,14 +1,17 @@
 let cart = [],
     bookList,
-    bagBook
+    bagBook,
+    cartCount
 
 function init() {
     cart = (JSON.parse(localStorage.getItem("cart")) || {list: []}).list
+    if (!Array.isArray(cart)) cart = []
 
     bookList = document.querySelector(".main-content")
     bagBook = document.querySelector(".bag-book")
+    cartCount = document.querySelector(".cart-count")
 
-    books.forEach((book, bookId) => {
+    yarns.forEach((book, bookId) => {
         let bookElem = addBook(book, bookId)
 
         bookElem.append(popup(book))
@@ -19,10 +22,12 @@ function init() {
 
     makeEventAddBook()
     makeEventDragOnBag()
+    makeEventOpenOrder()
+    updateCartCount()
 }
 
 function addBook(book, bookId) {
-    let bookElem = document.createElement("section")
+    let bookElem = document.createElement("article")
     bookElem.classList.add("book-card")
 
     bookElem.draggable = true
@@ -36,24 +41,34 @@ function addBook(book, bookId) {
 
     let nameBook = document.createElement("h3")
     nameBook.classList.add("name-book")
-    nameBook.innerHTML = book.title
+    nameBook.textContent = book.title
     bookElem.append(nameBook)
 
     let priceBook = document.createElement("p")
     priceBook.classList.add("price-book")
-    priceBook.innerHTML = `<b>Цена:</b> ${book.price} <span class="currency">₽</span>`
+
+    let priceLabel = document.createElement("b")
+    priceLabel.textContent = "Цена:"
+
+    let currency = document.createElement("span")
+    currency.classList.add("currency")
+    currency.textContent = "₽"
+
+    priceBook.append(priceLabel, ` ${book.price} `, currency)
     bookElem.append(priceBook)
 
     let sectionForButton = document.createElement("div")
     sectionForButton.classList.add("section-for-button")
 
-    let showMore = document.createElement("span")
+    let showMore = document.createElement("button")
+    showMore.type = "button"
     showMore.classList.add("show-more")
     showMore.innerText = "Подробнее"
 
     let addBookBag = document.createElement("button")
+    addBookBag.type = "button"
     addBookBag.classList.add("add-bag")
-    addBookBag.innerText = "В корзину"
+    addBookBag.innerText = "Добавить в корзину"
 
     sectionForButton.append(showMore)
     sectionForButton.append(addBookBag)
@@ -71,11 +86,11 @@ function popup(book) {
 
     let nameBookMod = document.createElement("h3")
     nameBookMod.classList.add("name-book-mod")
-    nameBookMod.innerHTML = book.title
+    nameBookMod.textContent = book.title
 
     let describeBook = document.createElement("p")
     describeBook.classList.add("describe-book")
-    describeBook.innerHTML = book.description
+    describeBook.textContent = book.description
 
     modalWin.append(nameBookMod, describeBook)
 
@@ -122,20 +137,32 @@ function makeEventDragOnBag() {
     bagBook.addEventListener("click", openCart)
 }
 
+function makeEventOpenOrder() {
+    let buttonOrder = document.querySelector(".button-order-open")
+    if (buttonOrder) buttonOrder.addEventListener("click", createOrder)
+}
+
 function drag(e) {
     e.dataTransfer.setData("id", e.currentTarget.dataset.bookId)
-    e.currentTarget.classList.add('over');
 }
 
 function drop(e) {
     e.preventDefault();
     addToCart(e.dataTransfer.getData("id"))
-    e.currentTarget.classList.add('over');
+    e.currentTarget.classList.add("over")
+    setTimeout(() => e.currentTarget.classList.remove("over"), 400)
 }
 
 function addToCart(bookId) {
     cart.push(bookId)
     saveCart()
+    updateCartCount()
+}
+
+function updateCartCount() {
+    if (!cartCount) return
+    cartCount.innerText = cart.length
+    cartCount.hidden = cart.length === 0
 }
 
 function saveCart() {
@@ -149,7 +176,7 @@ function openCart() {
 
 function createOrder() {
     saveCart()
-    window.location.href = "cart/cart.html"
+    window.location.href = "cart/cart.html?order=1"
 }
 
 window.onload = init;

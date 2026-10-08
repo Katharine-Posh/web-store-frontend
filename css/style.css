@@ -1,11 +1,16 @@
-:root {
+﻿:root {
     --background: linear-gradient(97.26deg, #ed3cca .49%, #df34d2 14.88%, #d02bd9 29.27%, #bf22e1 43.14%, #ae1ae8 57.02%, #9a10f0 70.89%, #8306f7 84.76%, #7c1af8 99.15%), linear-gradient(rgba(0, 0, 0, .05), rgba(0, 0, 0, .05));
     --color-title: #3a0a63;
     --border-accent: #3a0a63;
 }
 
+html {
+    overflow-x: hidden;
+}
+
 body {
-    width: 1280px;
+    width: 100%;
+    max-width: 1280px;
     margin: auto;
     position: relative;
 
@@ -13,12 +18,12 @@ body {
 }
 
 .main {
-    width: 1280px;
+    width: 100%;
     position: relative;
 }
 
 .header {
-    width: 1240px;
+    width: auto;
     height: 120px;
     margin: 20px;
     padding: 0 20px;
@@ -34,7 +39,7 @@ body {
 }
 
 .header-content {
-    width: 1200px;
+    width: 100%;
     height: 60px;
     position: relative;
 
@@ -49,12 +54,53 @@ body {
     right: 0;
     top: 0;
 
-    width: 80px;
     height: 60px;
+    padding-right: 5px;
+    box-sizing: border-box;
 
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    gap: 15px;
+}
+
+.button-order-open {
+    height: 34px;
+    padding: 0 18px;
+    box-sizing: border-box;
+
+    background: var(--color-title);
+    border: none;
+    border-radius: 100px;
+
+    font-family: "WB Sans", "Segoe UI", Arial, sans-serif;
+    font-size: 14px;
+    color: #FFFFFF;
+}
+
+.button-order-open:hover {
+    cursor: pointer;
+    background: rgba(58, 10, 99, 0.85);
+}
+
+.cart-count {
+    min-width: 22px;
+    height: 22px;
+    padding: 0 5px;
+    box-sizing: border-box;
+
+    position: absolute;
+    right: 45px;
+    top: 4px;
+
+    background: var(--color-title);
+    border: solid 2px #FFFFFF;
+    border-radius: 100px;
+
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    color: #FFFFFF;
 }
 
 .bag-book {
@@ -96,34 +142,28 @@ body {
     color: var(--color-title);
 }
 
-.subtitle-logo {
-    font-family: Arial, serif;
-    font-style: normal;
-    font-size: 15px;
-    line-height: 20px;
-    color: rgba(27, 27, 27, 0.903);
-    margin: 0;
-
-}
-
 .book-page {
-    width: 1280px;
-    height: 1627px;
+    width: 100%;
+    min-height: 1627px;
+    box-sizing: border-box;
+    padding: 82.5px 20px 57.5px;
 
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     align-items: center;
 }
 
 .main-content {
-    width: 1240px;
-    height: 1462px;
+    width: 100%;
+    max-width: 1240px;
+    min-height: 1462px;
 
 
     display: grid;
-    grid-template-columns: repeat(4, 295px);
-    grid-template-rows: repeat(3, 485px);
+    grid-template-columns: repeat(auto-fill, 295px);
+    grid-auto-rows: 485px;
+    justify-content: center;
     justify-items: center;
     column-gap: 20px;
     row-gap: 16px;
@@ -184,7 +224,7 @@ body {
 }
 
 .section-for-button {
-    width: 240px;
+    width: 255px;
     height: 34px;
 
     display: flex;
@@ -197,6 +237,8 @@ body {
 .show-more {
     width: 83px;
     height: 30px;
+    padding: 0;
+    box-sizing: border-box;
 
     display: flex;
     align-items: center;
@@ -220,12 +262,14 @@ body {
 }
 
 .add-bag {
-    width: 100px;
     height: 30px;
+    padding: 0 14px;
+    box-sizing: border-box;
 
     background: #FAFAFA;
     border-radius: 100px;
     border: solid 2px var(--border-accent);
+    white-space: nowrap;
 
     font-family: Arial, serif;
     font-style: normal;
@@ -301,4 +345,81 @@ body {
     font-size: 15px;
     line-height: 25px;
     color: rgba(27, 27, 27, 0.903);
+}
+
+[hidden] {
+    display: none !important;
+}
+
+/* ---------- media queries ---------- */
+
+@media (max-width: 1024px) {
+    .header {
+        height: 100px;
+        margin: 15px;
+    }
+
+    .book-page {
+        min-height: auto;
+        padding: 40px 20px;
+    }
+
+    .main-content {
+        min-height: auto;
+        grid-auto-rows: 485px;
+    }
+}
+
+@media (max-width: 640px) {
+    .header {
+        height: auto;
+        min-height: 80px;
+        margin: 10px;
+        padding: 12px 15px;
+    }
+
+    .header-content {
+        height: auto;
+        flex-wrap: wrap;
+        row-gap: 10px;
+        justify-content: space-between;
+    }
+
+    .section-bag {
+        position: static;
+        height: auto;
+        padding-right: 0;
+        gap: 10px;
+    }
+
+    .button-order-open {
+        height: 30px;
+        padding: 0 12px;
+        font-size: 12px;
+    }
+
+    .cart-count {
+        right: 48px;
+        top: -6px;
+    }
+
+    .logo-img {
+        width: 45px;
+        height: 45px;
+        margin-right: 10px;
+    }
+
+    .title-shop {
+        font-size: 24px;
+        line-height: 28px;
+    }
+
+    .book-page {
+        padding: 25px 12px;
+    }
+
+    .show-win {
+        width: 270px;
+        font-size: 14px;
+    }
 }

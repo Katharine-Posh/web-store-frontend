@@ -63,7 +63,7 @@ function openForm() {
 }
 
 function renderCart() {
-    cartList.innerHTML = ""
+    cartList.replaceChildren()
 
     if (!cart.list.length) {
         let empty = document.createElement("p")
@@ -105,11 +105,17 @@ function renderCart() {
 
         let titleBook = document.createElement("p")
         titleBook.classList.add("cart-item-title")
-        titleBook.innerHTML = "<b>Название:</b> " + book.title
+
+        let titleLabel = document.createElement("b")
+        titleLabel.textContent = "Название:"
+        titleBook.append(titleLabel, " " + book.title)
 
         let priceBook = document.createElement("p")
         priceBook.classList.add("cart-item-price")
-        priceBook.innerHTML = "<b>Цена:</b> " + book.price + " ₽"
+
+        let priceLabel = document.createElement("b")
+        priceLabel.textContent = "Цена:"
+        priceBook.append(priceLabel, " " + book.price + " ₽")
 
         let qtyBlock = document.createElement("div")
         qtyBlock.classList.add("cart-item-qty")
@@ -157,7 +163,10 @@ function renderCart() {
 
     let totalPrice = document.createElement("p")
     totalPrice.classList.add("cart-total")
-    totalPrice.innerHTML = "<b>Итого:</b> " + summa + " ₽"
+
+    let totalLabel = document.createElement("b")
+    totalLabel.textContent = "Итого:"
+    totalPrice.append(totalLabel, " " + summa + " ₽")
     cartList.append(totalPrice)
 }
 
@@ -182,7 +191,7 @@ function removeFromCart(bookId) {
 function clearFieldError(input) {
     if (input.classList.contains("invalid")) {
         input.classList.remove("invalid")
-        secError.innerHTML = ""
+        secError.textContent = ""
     }
 }
 
@@ -193,7 +202,7 @@ function validationName(e) {
         messages.push("Error name")
         if (inputForName == e.target) {
             inputForName.classList.add("invalid")
-            secError.innerHTML = "Введите корректное имя"
+            secError.textContent = "Введите корректное имя"
         }
     } else {
         clearFieldError(inputForName)
@@ -207,7 +216,7 @@ function validationSurname(e) {
         messages.push("Error surname")
         if (inputForSurname == e.target) {
             inputForSurname.classList.add("invalid")
-            secError.innerHTML = "Введите корректную фамилию"
+            secError.textContent = "Введите корректную фамилию"
         }
     } else {
         clearFieldError(inputForSurname)
@@ -221,7 +230,7 @@ function validationPhone(e) {
         messages.push("Error phone")
         if (inputForPhone == e.target) {
             inputForPhone.classList.add("invalid")
-            secError.innerHTML = "Введите корректный номер телефона"
+            secError.textContent = "Введите корректный номер телефона"
         }
     } else {
         clearFieldError(inputForPhone)
@@ -233,7 +242,7 @@ function validationAddress(e) {
         messages.push("Error address")
         if (inputForAddress == e.target) {
             inputForAddress.classList.add("invalid")
-            secError.innerHTML = "Введите адрес доставки"
+            secError.textContent = "Введите адрес доставки"
         }
     } else {
         clearFieldError(inputForAddress)
@@ -270,7 +279,7 @@ function popupOrder() {
 
     formAction.reset()
     formAction.querySelectorAll(".invalid").forEach((el) => el.classList.remove("invalid"))
-    secError.innerHTML = ""
+    secError.textContent = ""
     formAction.hidden = true
     buttonOrder.hidden = false
     buttonSubmit.disabled = true
