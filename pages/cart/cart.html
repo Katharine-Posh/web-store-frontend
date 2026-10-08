@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yarn shop - Cart</title>
+    <link href="cart.css" rel="stylesheet">
+    <script src="../main/books.js"></script>
+    <script src="cart.js"></script>
+</head>
+<body>
+<div class="main">
+    <div class="header">
+        <div class="header-content">
+            <a class="logo" href="../index.html">
+                <img class="logo-img" src="../../images/icon.svg" alt="Yarn shop" draggable="false">
+                <div class="logo-text">
+                    <h2 class="title-shop">Yarn shop</h2>
+                </div>
+            </a>
+            <section class="section-bag">
+                <img class="bag-book" src="../../images/cart.png" alt="Cart" draggable="false">
+            </section>
+        </div>
+    </div>
+
+    <section class="cart-container">
+        <h2 class="cart-title">Детали заказа</h2>
+        <table class="cart-table">
+            <tbody>
+            <tr>
+                <td class="cart-cell cart-items">
+                    <div class="cart-list"></div>
+                </td>
+
+                <td class="cart-cell cart-form">
+                    <form class="order-form" action="" method="get">
+                        <section class="section-input">
+                            <input type="text" id="name" placeholder="ФИО">
+                        </section>
+
+                        <section class="pay-block">
+                            <p class="pay-title">Тип оплаты</p>
+                            <section class="two-radio-button">
+                                <label class="rad-label">
+                                    Карта
+                                    <input class="pay-radio" type="radio" id="pay-card" name="pay" value="card">
+                                </label>
+                                <label class="rad-label">
+                                    Наличные
+                                    <input class="pay-radio" type="radio" id="pay-cash" name="pay" value="cash">
+                                </label>
+                            </section>
+                        </section>
+
+                        <section class="section-input">
+                            <input type="date" id="date">
+                        </section>
+
+                        <section class="section-input">
+                            <select id="pickup-point" required>
+                                <option value="" selected>Пункт выдачи</option>
+                                <option value="1">Пункт выдачи 1</option>
+                                <option value="2">Пункт выдачи 2</option>
+                                <option value="3">Пункт выдачи 3</option>
+                            </select>
+                        </section>
+
+                        <p class="show-error"></p>
+
+                        <button type="button" class="button-submit" disabled>Submit</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
+
+<section class="window-order">
+    <p class="order-title"></p>
+    <section class="order-date"></section>
+    <section class="order-pickup"></section>
+    <section class="order-customer"></section>
+    <button type="button" class="button-delete-window">Close</button>
+</section>
+</body>
+</html>
