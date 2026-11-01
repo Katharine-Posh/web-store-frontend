@@ -5,32 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yarn shop</title>
-    <link rel="icon" type="image/png" href="../images/favicon.png">
-    <link href="../css/style.css" rel="stylesheet">
-    <script src="../js/data.js"></script>
-    <script src="../js/script.js"></script>
+    <link href="style.css" rel="stylesheet">
+    <script src="script.js"></script>
 </head>
 <body>
-<main class="main">
-    <header class="header">
+<div class="main">
+    <div class="header">
         <div class="header-content">
-            <a class="logo" href="index.html">
-                <img class="logo-img" src="../images/icon.svg" alt="Логотип Yarn shop" draggable="false">
-                <div class="logo-text">
-                    <h1 class="title-shop">Yarn shop</h1>
-                </div>
-            </a>
-            <div class="section-bag">
-                <button type="button" class="button-order-open">Оформить заказ</button>
-                <span class="cart-count" hidden>0</span>
-                <img class="bag-book" src="../images/cart.png" alt="Корзина" draggable="false">
-            </div>
+            <section class="logo">
+                <h2 class="title-shop">Yarn shop</h2>
+            </section>
+            <section class="section-bag">
+                <img class="bag-book" src="../images/icon.svg" alt="Logo" draggable="false">
+            </section>
         </div>
-    </header>
+    </div>
 
-    <section class="book-page" aria-label="Каталог товаров">
+    <section class="book-page">
         <div class="main-content"></div>
     </section>
-</main>
+</div>
 </body>
 </html>
