@@ -1,51 +1,51 @@
 let cart = [],
-    bookList,
-    bagBook,
+    yarnList,
+    bagYarn,
     cartCount
 
 function init() {
     cart = (JSON.parse(localStorage.getItem("cart")) || {list: []}).list
     if (!Array.isArray(cart)) cart = []
 
-    bookList = document.querySelector(".main-content")
-    bagBook = document.querySelector(".bag-book")
+    yarnList = document.querySelector(".main-content")
+    bagYarn = document.querySelector(".bag-book")
     cartCount = document.querySelector(".cart-count")
 
-    yarns.forEach((book, bookId) => {
-        let bookElem = addBook(book, bookId)
+    yarns.forEach((yarn, yarnId) => {
+        let yarnElem = addYarn(yarn, yarnId)
 
-        bookElem.append(popup(book))
-        bookList.append(bookElem)
+        yarnElem.append(popup(yarn))
+        yarnList.append(yarnElem)
 
-        initPopupOnHover(bookElem)
+        initPopupOnHover(yarnElem)
     })
 
-    makeEventAddBook()
+    makeEventAddYarn()
     makeEventDragOnBag()
     makeEventOpenOrder()
     updateCartCount()
 }
 
-function addBook(book, bookId) {
-    let bookElem = document.createElement("article")
-    bookElem.classList.add("yarn-card")
+function addYarn(yarn, yarnId) {
+    let yarnElem = document.createElement("article")
+    yarnElem.classList.add("yarn-card")
 
-    bookElem.draggable = true
-    bookElem.dataset.bookId = bookId
+    yarnElem.draggable = true
+    yarnElem.dataset.yarnId = yarnId
 
-    let imgBook = document.createElement("img")
-    imgBook.classList.add("imgCard")
-    imgBook.setAttribute('src', new URL(book.imageLink, DATA_ROOT).href)
-    imgBook.draggable = false
-    bookElem.append(imgBook);
+    let imgYarn = document.createElement("img")
+    imgYarn.classList.add("imgCard")
+    imgYarn.setAttribute('src', new URL(yarn.imageLink, DATA_ROOT).href)
+    imgYarn.draggable = false
+    yarnElem.append(imgYarn);
 
-    let nameBook = document.createElement("h3")
-    nameBook.classList.add("name-yarn")
-    nameBook.textContent = book.title
-    bookElem.append(nameBook)
+    let nameYarn = document.createElement("h3")
+    nameYarn.classList.add("name-yarn")
+    nameYarn.textContent = yarn.title
+    yarnElem.append(nameYarn)
 
-    let priceBook = document.createElement("p")
-    priceBook.classList.add("price-yarn")
+    let priceYarn = document.createElement("p")
+    priceYarn.classList.add("price-yarn")
 
     let priceLabel = document.createElement("b")
     priceLabel.textContent = "Цена:"
@@ -54,8 +54,8 @@ function addBook(book, bookId) {
     currency.classList.add("currency")
     currency.textContent = "₽"
 
-    priceBook.append(priceLabel, ` ${book.price} `, currency)
-    bookElem.append(priceBook)
+    priceYarn.append(priceLabel, ` ${yarn.price} `, currency)
+    yarnElem.append(priceYarn)
 
     let sectionForButton = document.createElement("div")
     sectionForButton.classList.add("section-for-button")
@@ -65,41 +65,41 @@ function addBook(book, bookId) {
     showMore.classList.add("show-more")
     showMore.innerText = "Подробнее"
 
-    let addBookBag = document.createElement("button")
-    addBookBag.type = "button"
-    addBookBag.classList.add("add-bag")
-    addBookBag.innerText = "Добавить в корзину"
+    let addYarnBag = document.createElement("button")
+    addYarnBag.type = "button"
+    addYarnBag.classList.add("add-bag")
+    addYarnBag.innerText = "Добавить в корзину"
 
     sectionForButton.append(showMore)
-    sectionForButton.append(addBookBag)
+    sectionForButton.append(addYarnBag)
 
-    bookElem.append(sectionForButton)
+    yarnElem.append(sectionForButton)
 
-    bookElem.ondragstart = drag;
+    yarnElem.ondragstart = drag;
 
-    return bookElem
+    return yarnElem
 }
 
-function popup(book) {
+function popup(yarn) {
     let modalWin = document.createElement("section")
     modalWin.classList.add("modal-win")
 
-    let nameBookMod = document.createElement("h3")
-    nameBookMod.classList.add("name-yarn-mod")
-    nameBookMod.textContent = book.title
+    let nameYarnMod = document.createElement("h3")
+    nameYarnMod.classList.add("name-yarn-mod")
+    nameYarnMod.textContent = yarn.title
 
-    let describeBook = document.createElement("p")
-    describeBook.classList.add("describe-yarn")
-    describeBook.textContent = book.description
+    let describeYarn = document.createElement("p")
+    describeYarn.classList.add("describe-yarn")
+    describeYarn.textContent = yarn.description
 
-    modalWin.append(nameBookMod, describeBook)
+    modalWin.append(nameYarnMod, describeYarn)
 
     return modalWin
 }
 
-function initPopupOnHover(bookElem) {
-    let modalWin = bookElem.querySelector(".modal-win")
-    let showMore = bookElem.querySelector(".show-more")
+function initPopupOnHover(yarnElem) {
+    let modalWin = yarnElem.querySelector(".modal-win")
+    let showMore = yarnElem.querySelector(".show-more")
     let hideTimer
 
     let show = () => {
@@ -118,23 +118,23 @@ function initPopupOnHover(bookElem) {
     modalWin.addEventListener("mouseleave", hide)
 }
 
-function makeEventAddBook() {
+function makeEventAddYarn() {
     let allButton = document.querySelectorAll(".add-bag")
     for (let elem of allButton) {
         let card = elem.closest(".yarn-card")
         elem.addEventListener("click", () => {
-            addToCart(card.dataset.bookId)
+            addToCart(card.dataset.yarnId)
         })
     }
 }
 
 function makeEventDragOnBag() {
-    bagBook.addEventListener("dragover", (event) => {
+    bagYarn.addEventListener("dragover", (event) => {
         event.preventDefault();
     });
 
-    bagBook.addEventListener("drop", drop)
-    bagBook.addEventListener("click", openCart)
+    bagYarn.addEventListener("drop", drop)
+    bagYarn.addEventListener("click", openCart)
 }
 
 function makeEventOpenOrder() {
@@ -143,7 +143,7 @@ function makeEventOpenOrder() {
 }
 
 function drag(e) {
-    e.dataTransfer.setData("id", e.currentTarget.dataset.bookId)
+    e.dataTransfer.setData("id", e.currentTarget.dataset.yarnId)
 }
 
 function drop(e) {
@@ -153,8 +153,8 @@ function drop(e) {
     setTimeout(() => e.currentTarget.classList.remove("over"), 400)
 }
 
-function addToCart(bookId) {
-    cart.push(bookId)
+function addToCart(yarnId) {
+    cart.push(yarnId)
     saveCart()
     updateCartCount()
 }
