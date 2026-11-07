@@ -64,45 +64,6 @@ body {
     gap: 15px;
 }
 
-.button-order-open {
-    height: 34px;
-    padding: 0 18px;
-    box-sizing: border-box;
-
-    background: var(--color-title);
-    border: none;
-    border-radius: 100px;
-
-    font-family: "WB Sans", "Segoe UI", Arial, sans-serif;
-    font-size: 14px;
-    color: #FFFFFF;
-}
-
-.button-order-open:hover {
-    cursor: pointer;
-    background: rgba(58, 10, 99, 0.85);
-}
-
-.cart-count {
-    min-width: 22px;
-    height: 22px;
-    padding: 0 5px;
-    box-sizing: border-box;
-
-    position: absolute;
-    right: 45px;
-    top: 4px;
-
-    background: var(--color-title);
-    border: solid 2px #FFFFFF;
-    border-radius: 100px;
-
-    font-size: 12px;
-    line-height: 18px;
-    text-align: center;
-    color: #FFFFFF;
-}
-
 .bag-yarn {
     width: 55px;
     height: 55px;
@@ -390,17 +351,6 @@ body {
         height: auto;
         padding-right: 0;
         gap: 10px;
-    }
-
-    .button-order-open {
-        height: 30px;
-        padding: 0 12px;
-        font-size: 12px;
-    }
-
-    .cart-count {
-        right: 48px;
-        top: -6px;
     }
 
     .logo-img {

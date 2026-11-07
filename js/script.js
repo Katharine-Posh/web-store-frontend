@@ -1,7 +1,6 @@
 let cart = [],
     yarnList,
-    bagYarn,
-    cartCount
+    bagYarn
 
 function init() {
     cart = (JSON.parse(localStorage.getItem("cart")) || {list: []}).list
@@ -9,7 +8,6 @@ function init() {
 
     yarnList = document.querySelector(".main-content")
     bagYarn = document.querySelector(".bag-yarn")
-    cartCount = document.querySelector(".cart-count")
 
     yarns.forEach((yarn, yarnId) => {
         let yarnElem = addYarn(yarn, yarnId)
@@ -22,8 +20,6 @@ function init() {
 
     makeEventAddYarn()
     makeEventDragOnBag()
-    makeEventOpenOrder()
-    updateCartCount()
 }
 
 function addYarn(yarn, yarnId) {
@@ -137,11 +133,6 @@ function makeEventDragOnBag() {
     bagYarn.addEventListener("click", openCart)
 }
 
-function makeEventOpenOrder() {
-    let buttonOrder = document.querySelector(".button-order-open")
-    if (buttonOrder) buttonOrder.addEventListener("click", createOrder)
-}
-
 function drag(e) {
     e.dataTransfer.setData("id", e.currentTarget.dataset.yarnId)
 }
@@ -156,13 +147,6 @@ function drop(e) {
 function addToCart(yarnId) {
     cart.push(yarnId)
     saveCart()
-    updateCartCount()
-}
-
-function updateCartCount() {
-    if (!cartCount) return
-    cartCount.innerText = cart.length
-    cartCount.hidden = cart.length === 0
 }
 
 function saveCart() {
@@ -172,11 +156,6 @@ function saveCart() {
 function openCart() {
     saveCart()
     window.location.href = "cart/cart.html"
-}
-
-function createOrder() {
-    saveCart()
-    window.location.href = "cart/cart.html?order=1"
 }
 
 window.onload = init;
