@@ -28,7 +28,7 @@ function init() {
 
 function addBook(book, bookId) {
     let bookElem = document.createElement("article")
-    bookElem.classList.add("book-card")
+    bookElem.classList.add("yarn-card")
 
     bookElem.draggable = true
     bookElem.dataset.bookId = bookId
@@ -40,12 +40,12 @@ function addBook(book, bookId) {
     bookElem.append(imgBook);
 
     let nameBook = document.createElement("h3")
-    nameBook.classList.add("name-book")
+    nameBook.classList.add("name-yarn")
     nameBook.textContent = book.title
     bookElem.append(nameBook)
 
     let priceBook = document.createElement("p")
-    priceBook.classList.add("price-book")
+    priceBook.classList.add("price-yarn")
 
     let priceLabel = document.createElement("b")
     priceLabel.textContent = "Цена:"
@@ -85,11 +85,11 @@ function popup(book) {
     modalWin.classList.add("modal-win")
 
     let nameBookMod = document.createElement("h3")
-    nameBookMod.classList.add("name-book-mod")
+    nameBookMod.classList.add("name-yarn-mod")
     nameBookMod.textContent = book.title
 
     let describeBook = document.createElement("p")
-    describeBook.classList.add("describe-book")
+    describeBook.classList.add("describe-yarn")
     describeBook.textContent = book.description
 
     modalWin.append(nameBookMod, describeBook)
@@ -121,7 +121,7 @@ function initPopupOnHover(bookElem) {
 function makeEventAddBook() {
     let allButton = document.querySelectorAll(".add-bag")
     for (let elem of allButton) {
-        let card = elem.closest(".book-card")
+        let card = elem.closest(".yarn-card")
         elem.addEventListener("click", () => {
             addToCart(card.dataset.bookId)
         })

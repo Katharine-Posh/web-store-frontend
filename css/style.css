@@ -142,7 +142,7 @@ body {
     color: var(--color-title);
 }
 
-.book-page {
+.yarn-page {
     width: 100%;
     min-height: 1627px;
     box-sizing: border-box;
@@ -169,7 +169,7 @@ body {
     row-gap: 16px;
 }
 
-.book-card {
+.yarn-card {
     width: 295px;
     height: 460px;
     margin: 0;
@@ -193,7 +193,7 @@ body {
     object-fit: contain;
 }
 
-.name-book {
+.name-yarn {
     width: 247px;
     height: 72px;
     margin: 0;
@@ -206,7 +206,7 @@ body {
     color: var(--color-title);
 }
 
-.price-book {
+.price-yarn {
     width: 160px;
     height: 22px;
     margin: 0;
@@ -320,7 +320,7 @@ body {
 
 }
 
-.name-book-mod {
+.name-yarn-mod {
     margin: 0 0 10px 0;
     flex: 0 0 auto;
     max-height: 90px;
@@ -333,7 +333,7 @@ body {
     color: var(--color-title);
 }
 
-.describe-book {
+.describe-yarn {
     margin: 0;
     padding-right: 5px;
     flex: 1 1 auto;
@@ -359,7 +359,7 @@ body {
         margin: 15px;
     }
 
-    .book-page {
+    .yarn-page {
         min-height: auto;
         padding: 40px 20px;
     }
@@ -414,7 +414,7 @@ body {
         line-height: 28px;
     }
 
-    .book-page {
+    .yarn-page {
         padding: 25px 12px;
     }
 
