@@ -76,46 +76,46 @@ function renderCart() {
     let groups = {},
         order = []
 
-    cart.list.forEach((bookId) => {
-        if (!(bookId in groups)) {
-            groups[bookId] = 0
-            order.push(bookId)
+    cart.list.forEach((yarnId) => {
+        if (!(yarnId in groups)) {
+            groups[yarnId] = 0
+            order.push(yarnId)
         }
-        groups[bookId]++
+        groups[yarnId]++
     })
 
     let summa = 0
 
-    order.forEach((bookId) => {
-        let book = yarns[bookId],
-            qty = groups[bookId]
+    order.forEach((yarnId) => {
+        let yarn = yarns[yarnId],
+            qty = groups[yarnId]
 
-        if (!book) return
+        if (!yarn) return
 
         let item = document.createElement("article")
         item.classList.add("cart-item")
 
         let imgItem = document.createElement("img")
         imgItem.classList.add("cart-item-img")
-        imgItem.setAttribute("src", new URL(book.imageLink, DATA_ROOT).href)
-        imgItem.setAttribute("alt", book.title)
+        imgItem.setAttribute("src", new URL(yarn.imageLink, DATA_ROOT).href)
+        imgItem.setAttribute("alt", yarn.title)
 
-        let infoBooks = document.createElement("div")
-        infoBooks.classList.add("cart-item-info")
+        let infoYarn = document.createElement("div")
+        infoYarn.classList.add("cart-item-info")
 
-        let titleBook = document.createElement("p")
-        titleBook.classList.add("cart-item-title")
+        let titleYarn = document.createElement("p")
+        titleYarn.classList.add("cart-item-title")
 
         let titleLabel = document.createElement("b")
         titleLabel.textContent = "Название:"
-        titleBook.append(titleLabel, " " + book.title)
+        titleYarn.append(titleLabel, " " + yarn.title)
 
-        let priceBook = document.createElement("p")
-        priceBook.classList.add("cart-item-price")
+        let priceYarn = document.createElement("p")
+        priceYarn.classList.add("cart-item-price")
 
         let priceLabel = document.createElement("b")
         priceLabel.textContent = "Цена:"
-        priceBook.append(priceLabel, " " + book.price + " ₽")
+        priceYarn.append(priceLabel, " " + yarn.price + " ₽")
 
         let qtyBlock = document.createElement("div")
         qtyBlock.classList.add("cart-item-qty")
@@ -126,7 +126,7 @@ function renderCart() {
         buttonDec.innerText = "−"
         buttonDec.disabled = qty <= 1
         buttonDec.setAttribute("aria-label", "Уменьшить количество")
-        buttonDec.onclick = () => changeQty(bookId, -1)
+        buttonDec.onclick = () => changeQty(yarnId, -1)
 
         let qtyValue = document.createElement("span")
         qtyValue.classList.add("qty-value")
@@ -137,11 +137,11 @@ function renderCart() {
         buttonInc.classList.add("qty-btn")
         buttonInc.innerText = "+"
         buttonInc.setAttribute("aria-label", "Увеличить количество")
-        buttonInc.onclick = () => changeQty(bookId, 1)
+        buttonInc.onclick = () => changeQty(yarnId, 1)
 
         let subtotal = document.createElement("span")
         subtotal.classList.add("cart-item-subtotal")
-        subtotal.innerText = book.price * qty + " ₽"
+        subtotal.innerText = yarn.price * qty + " ₽"
 
         qtyBlock.append(buttonDec, qtyValue, buttonInc, subtotal)
 
@@ -150,15 +150,15 @@ function renderCart() {
         buttonDelete.classList.add("button-delete")
         buttonDelete.innerText = "X"
         buttonDelete.setAttribute("aria-label", "Удалить товар")
-        buttonDelete.onclick = () => removeFromCart(bookId)
+        buttonDelete.onclick = () => removeFromCart(yarnId)
 
-        infoBooks.append(titleBook, priceBook, qtyBlock)
+        infoYarn.append(titleYarn, priceYarn, qtyBlock)
 
-        item.append(imgItem, infoBooks, buttonDelete)
+        item.append(imgItem, infoYarn, buttonDelete)
 
         cartList.append(item)
 
-        summa += book.price * qty
+        summa += yarn.price * qty
     })
 
     let totalPrice = document.createElement("p")
@@ -170,11 +170,11 @@ function renderCart() {
     cartList.append(totalPrice)
 }
 
-function changeQty(bookId, delta) {
+function changeQty(yarnId, delta) {
     if (delta > 0) {
-        cart.list.push(bookId)
+        cart.list.push(yarnId)
     } else {
-        let index = cart.list.indexOf(bookId)
+        let index = cart.list.indexOf(yarnId)
         if (index !== -1) cart.list.splice(index, 1)
     }
 
@@ -182,8 +182,8 @@ function changeQty(bookId, delta) {
     renderCart()
 }
 
-function removeFromCart(bookId) {
-    cart.list = cart.list.filter((id) => id !== bookId)
+function removeFromCart(yarnId) {
+    cart.list = cart.list.filter((id) => id !== yarnId)
     saveCart()
     renderCart()
 }
