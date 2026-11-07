@@ -8,7 +8,7 @@ function init() {
     if (!Array.isArray(cart)) cart = []
 
     yarnList = document.querySelector(".main-content")
-    bagYarn = document.querySelector(".bag-book")
+    bagYarn = document.querySelector(".bag-yarn")
     cartCount = document.querySelector(".cart-count")
 
     yarns.forEach((yarn, yarnId) => {

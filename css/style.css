@@ -103,12 +103,12 @@ body {
     color: #FFFFFF;
 }
 
-.bag-book {
+.bag-yarn {
     width: 55px;
     height: 55px;
 }
 
-.bag-book.over {
+.bag-yarn.over {
     outline: solid 2px #FFFFFF;
     border-radius: 9px;
 }
